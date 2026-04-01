@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 CITIES = ["Hyderabad", "Bengaluru"]
-TITLES = ["director", "head", "senior manager", "vp"]
+TITLES = ["director", "head", "senior manager", "vp","Associate Director"]
 
 def fetch_jobs():
     # Replace later with real scraping or API
