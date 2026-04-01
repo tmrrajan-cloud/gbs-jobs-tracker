@@ -5,12 +5,15 @@ CITIES = ["Hyderabad", "Bengaluru"]
 TITLES = ["director", "head", "senior manager", "vp","Associate Director"]
 
 def fetch_jobs():
-    # Replace later with real scraping or API
-    jobs = [
-        ["Hyderabad", "Reckitt", "Senior Manager - GBS Migration", "https://careers.reckitt.com"],
-        ["Bengaluru", "Standard Chartered", "Director - Global Business Services", "https://sc.com/careers"],
+    with open("roles.yaml") as f:
+        config = yaml.safe_load(f)
+
+    data = [
+        [r["city"], r["company"], r["title"], r["url"]]
+        for r in config["roles"]
     ]
-    return pd.DataFrame(jobs, columns=["City","Company","Role Title","Job URL"])
+
+    return pd.DataFrame(data, columns=["City","Company","Role Title","Job URL"])
 
 def main():
     df = fetch_jobs()
